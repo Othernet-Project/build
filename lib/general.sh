@@ -800,7 +800,7 @@ download_and_verify()
 		return
 	fi
 
-	aria2c --download-result=hide --disable-ipv6=true --summary-interval=0 --console-log-level=error --auto-file-renaming=false \
+	aria2c --download-result=default --disable-ipv6=true --summary-interval=0 --console-log-level=error --auto-file-renaming=false \
 	--continue=false --allow-overwrite=true --dir=${localdir} $(webseed "$remotedir/${filename}.asc") -o "${filename}.asc"
 	[[ $? -ne 0 ]] && display_alert "Failed to download control file" "" "wrn"
 
@@ -811,7 +811,7 @@ download_and_verify()
 
 		display_alert "downloading using torrent network" "$filename"
 		local ariatorrent="--summary-interval=0 --auto-save-interval=0 --seed-time=0 --bt-stop-timeout=15 --console-log-level=error \
-		--allow-overwrite=true --download-result=hide --rpc-save-upload-metadata=false --auto-file-renaming=false \
+		--allow-overwrite=true --download-result=default --rpc-save-upload-metadata=false --auto-file-renaming=false \
 		--file-allocation=trunc --continue=true https://dl.armbian.com/torrent/${filename}.torrent \
 		--dht-file-path=$SRC/cache/.aria2/dht.dat --disable-ipv6=true --stderr --follow-torrent=mem --dir=${localdir}"
 
@@ -832,7 +832,7 @@ download_and_verify()
 		if [[ `wget -S --spider https://dl.armbian.com/${remotedir}/${filename} 2>&1 >/dev/null \
 			| grep 'HTTP/1.1 200 OK'` ]]; then
 			display_alert "downloading using http(s) network" "$filename"
-			aria2c --download-result=hide --rpc-save-upload-metadata=false --console-log-level=error \
+			aria2c --download-result=default --rpc-save-upload-metadata=false --console-log-level=error \
 			--dht-file-path=$SRC/cache/.aria2/dht.dat --disable-ipv6=true --summary-interval=0 --auto-file-renaming=false --dir=${localdir} $(webseed "$remotedir/$filename") -o ${filename}
 			# mark complete
 			[[ $? -eq 0 ]] && touch ${localdir}/${filename}.complete && echo ""

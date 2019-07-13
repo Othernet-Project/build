@@ -1,0 +1,6 @@
+verbosity=1
+logo=disabled
+console=both
+disp_mode=1920x1080p60
+consoleargs=earlyprintk
+
