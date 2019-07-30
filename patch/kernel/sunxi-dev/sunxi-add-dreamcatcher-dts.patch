@@ -540,7 +540,7 @@ index 0000000..d57ff30
 +			pinctrl-names = "default";
 +			pinctrl-0 = <&spi0_pins_a>, <&spi0_cs0_pins_a>;
 +			spidev@0 {
-+				compatible = "spidev";
++				compatible = "semtech,sx1301";
 +				reg = <0>;
 +				spi-max-frequency = <10000000>;
 +			};
@@ -561,7 +561,7 @@ index 0000000..d57ff30
 +			pinctrl-names = "default";
 +			pinctrl-0 = <&spi1_pins_a>, <&spi1_cs0_pins_a>;
 +			spidev@0 {
-+				compatible = "spidev";
++				compatible = "semtech,sx1301";
 +				reg = <0>;
 +				spi-max-frequency = <10000000>;
 +			};
@@ -686,7 +686,7 @@ index 0000000..d57ff30
 +			pinctrl-names = "default";
 +			pinctrl-0 = <&spi2_pins_a>, <&spi2_cs0_pins_a>;
 +			spidev@0 {
-+				compatible = "spidev";
++				compatible = "semtech,sx1301";
 +				reg = <0>;
 +				spi-max-frequency = <10000000>;
 +			};
